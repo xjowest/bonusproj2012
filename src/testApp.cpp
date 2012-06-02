@@ -39,9 +39,9 @@ void testApp::update(){
 		for(int i=0;i<2;i++) filter3x3(vector2D, LP);
 		filter3x3(vector2D, HP);
 		tHold(vector2D);
-		for(int i=0;i<8;i++) shrink(vector2D);
-		for(int i=0;i<10;i++) expand(vector2D);
-		for(int i=0;i<12;i++) shrink(vector2D);
+		for(int i=0;i<3;i++) shrink(vector2D);
+		for(int i=0;i<4;i++) expand(vector2D);
+		for(int i=0;i<3;i++) shrink(vector2D);
 		getRGBVector(grayPixels, vector2D);
     }
 
@@ -103,7 +103,7 @@ void testApp::shrink(unsigned char img[320][240]){
 
     for(int y = 1;y < camHeight-1; y++){
         for(int x = 1; x < camWidth-1; x++){
-            if(countPix(img, x, y) > 2)
+            if(countPix(img, x, y) > 3)
                 tmp[x][y] = img[x][y];
             else
                 tmp[x][y] = 0;
@@ -122,7 +122,7 @@ void testApp::expand(unsigned char img[320][240]){
 
     for(int y = 1;y < camHeight-1; y++){
         for(int x = 1; x < camWidth-1; x++){
-            if(countPix(img, x, y) > 4)
+            if(countPix(img, x, y) > 3)
                 tmp[x][y] = 255;
             else
                 tmp[x][y] = img[x][y];
